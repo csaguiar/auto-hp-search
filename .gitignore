@@ -1,0 +1,28 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# uv
+# (uv.lock SHOULD be committed — don't ignore it)
+
+# Data + model artifacts
+data/
+*.pt
+*.pth
+*.ckpt
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Jupyter (if you add an analysis notebook later)
+.ipynb_checkpoints/
+
+runs/**
+!runs/log.jsonl
