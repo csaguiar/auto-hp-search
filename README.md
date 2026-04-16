@@ -5,6 +5,9 @@ editing a training script, running it, reading the results, and deciding what
 to try next. The ML task (a small Fashion-MNIST classifier) is a toy stand-in;
 the point of this repo is the research *setup*, not the model.
 
+This project is a streamlined adaptation of [Karpathy's autoresearch](https://github.com/karpathy/autoresearch) to
+work on a simpler deep learning example.
+
 ## What's interesting here
 
 Most "agent writes ML code" demos let the agent run wild: rewrite the data
