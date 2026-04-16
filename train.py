@@ -30,7 +30,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from prepare import (
-    NUM_CLASSES, IMG_SHAPE, get_loaders, evaluate,
+    NUM_CLASSES, IMG_SHAPE, get_loaders, evaluate, get_device,
 )
 
 # ---------------------------------------------------------------------------
@@ -112,7 +112,7 @@ class Model(nn.Module):
 
 
 def main():
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = get_device()
     print(f"Device: {device} | Budget: {TIME_BUDGET_SECONDS}s")
 
     train_loader, _ = get_loaders(batch_size=BATCH_SIZE)

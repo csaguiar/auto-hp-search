@@ -51,6 +51,13 @@ def _build_splits():
     val_idx, train_idx = perm[:VAL_SIZE], perm[VAL_SIZE:]
     return Subset(full, train_idx), Subset(full, val_idx)
 
+def get_device():
+    if torch.backends.mps.is_available():
+        return torch.device("mps")
+    elif torch.cuda.is_available():
+        return torch.device("cuda")
+    else:
+        return torch.device("cpu")
 
 def get_loaders(batch_size: int):
     """Return (train_loader, val_loader). The agent picks batch_size."""
@@ -89,7 +96,7 @@ def evaluate(model: torch.nn.Module, device: torch.device) -> dict:
 
 if __name__ == "__main__":
     # Smoke test: download + one eval pass with an untrained linear model.
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = get_device()
     dummy = torch.nn.Sequential(
         torch.nn.Flatten(),
         torch.nn.Linear(28 * 28, NUM_CLASSES),
